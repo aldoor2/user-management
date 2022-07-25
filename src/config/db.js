@@ -1,0 +1,8 @@
+import mongoose from 'mongoose'
+
+const connectDB = (url) =>
+  mongoose.connect(url)
+    .then(() => console.log('Database connected'))
+    .catch(err => console.error(err.message))
+
+export default connectDB
