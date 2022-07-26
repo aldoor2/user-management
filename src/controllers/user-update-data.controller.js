@@ -6,14 +6,14 @@ const userUpdateDataController = async (req, res) => {
 
   const foundUserById = await UserModel.findById(id).exec()
   if (!foundUserById)
-    return res.status(401).send('Usuario no autorizado')
+    return res.status(401).json({ error: 'Usuario no autorizado' })
 
   foundUserById.name = name
   foundUserById.surname = surname
 
   await foundUserById.save()
 
-  return res.send('Los datos del usuario actualizado')
+  return res.json({ message: 'Los datos del usuario actualizado' })
 }
 
 export default userUpdateDataController

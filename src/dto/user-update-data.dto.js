@@ -4,7 +4,7 @@ import addErrors from 'ajv-errors'
 import {
   nameDTOSchema,
   surnameDTOSchema
-} from '#Lib/dto-types.js'
+} from '#Dto/dto-types.js'
 
 const UpdateDataDTOSchema = Type.Object({
   name: nameDTOSchema,

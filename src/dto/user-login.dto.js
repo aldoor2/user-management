@@ -5,7 +5,7 @@ import addErrors from 'ajv-errors'
 import {
   emailDTOSchema,
   passwordDTOSchema
-} from '#Lib/dto-types.js'
+} from '#Dto/dto-types.js'
 
 const LoginDTOSchema = Type.Object({
   email: emailDTOSchema,

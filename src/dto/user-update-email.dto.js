@@ -4,7 +4,7 @@ import addFormats from 'ajv-formats'
 import addErrors from 'ajv-errors'
 import {
   emailDTOSchema, passwordDTOSchema
-} from '#Lib/dto-types.js'
+} from '#Dto/dto-types.js'
 
 const UpdateEmailDTOSchema = Type.Object({
   email: emailDTOSchema,

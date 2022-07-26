@@ -7,15 +7,15 @@ const userUnregisterController = async (req, res) => {
 
   const foundUserById = await UserModel.findByIdAndDelete(id).exec()
   if (!foundUserById)
-    return res.status(401).send('Usuario no autorizado')
+    return res.status(401).json({ error: 'Usuario no autorizado' })
 
   const checkPassword = compare(password, foundUserById.password)
   if (!checkPassword)
-    return res.status(401).send('Usuario no autorizado')
+    return res.status(401).json({ error: 'Usuario no autorizado' })
 
   await foundUserById.delete()
 
-  return res.status(204).send("Los datos del usuario han sido eliminados")
+  return res.json({ message: "Los datos del usuario han sido eliminados" })
 }
 
 export default userUnregisterController

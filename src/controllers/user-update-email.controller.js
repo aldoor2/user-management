@@ -7,18 +7,18 @@ const userUpdateEmailController = async (req, res) => {
 
   const foundUserById = await UserModel.findById(id).exec()
   if (!foundUserById)
-    return res.status(401).send('Usuario no autorizado')
+    return res.status(401).json({ error: 'Usuario no autorizado' })
 
   const checkPassword = await compare(password, foundUserById.password)
 
   if (!checkPassword)
-    return res.status(401).send('Credenciales incorrectas')
+    return res.status(409).json({ error: 'Credenciales incorrectas' })
 
   foundUserById.email = email
 
   await foundUserById.save()
 
-  return res.send('Email del usuario actualizado')
+  return res.json({ message: 'Email del usuario actualizado' })
 }
 
 export default userUpdateEmailController
