@@ -78,7 +78,7 @@ export const userUpdatePasswordController = async (req, res) => {
   const checkPassword = await compare(oldPassword, foundUserById.password)
 
   if (!checkPassword)
-    return res.status(401).json({ error: 'Credentiales incorrectas' })
+    return res.status(409).json({ error: 'Credentiales incorrectas' })
 
   const hashedPassword = await hash(newPassword, SALT)
   foundUserById.password = hashedPassword
