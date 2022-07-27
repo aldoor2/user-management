@@ -20,17 +20,6 @@ const ajv = new Ajv({ allErrors: true })
 ajv.addFormat("password", /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/)
 addErrors(ajv)
 
-const validateSchema = ajv.compile(UpdatePasswordDTOSchema)
+const validateUserUpdatePasswordDTO = ajv.compile(UpdatePasswordDTOSchema)
 
-const userUpdatePasswordDTO = (req, res, next) => {
-  const isDTOValid = validateSchema(req.body)
-
-  if (!isDTOValid)
-    return res
-      .status(400)
-      .json({ errors: validateSchema.errors.map(error => error.message) })
-
-  next()
-}
-
-export default userUpdatePasswordDTO
+export default validateUserUpdatePasswordDTO

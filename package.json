@@ -41,8 +41,10 @@
         "#Constants/*": "./src/constants/*",
         "#Controllers/*": "./src/controllers/*",
         "#Dto/*": "./src/dto/*",
+        "#Middlewares/*": "./src/middlewares/*",
         "#Routes/*": "./src/routes/*",
-        "#Schemas/*": "./src/schemas/*"
+        "#Schemas/*": "./src/schemas/*",
+        "#Utils/*": "./src/utils/*"
     },
     "lint-staged": {
         "*.js": "eslint --fix",

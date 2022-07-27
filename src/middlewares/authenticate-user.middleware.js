@@ -1,6 +1,6 @@
 import { jwtVerify } from 'jose'
 
-const userJWTDTO = async (req, res, next) => {
+const authenticateUserByJWT = async (req, res, next) => {
   const { authorization } = req.headers
 
   if (!authorization) return res.status(401).json({ error: 'Usuario no autorizado' })
@@ -24,4 +24,4 @@ const userJWTDTO = async (req, res, next) => {
   }
 }
 
-export default userJWTDTO
+export default authenticateUserByJWT

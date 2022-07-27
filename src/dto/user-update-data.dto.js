@@ -22,17 +22,6 @@ const ajv = new Ajv({ allErrors: true })
 
 addErrors(ajv)
 
-const validateSchema = ajv.compile(UpdateDataDTOSchema)
+const validateUserUpdateDataDTO = ajv.compile(UpdateDataDTOSchema)
 
-const userUpdateDataDTO = (req, res, next) => {
-  const isDTOValid = validateSchema(req.body)
-
-  if (!isDTOValid)
-    return res
-      .status(400)
-      .json({ errors: validateSchema.errors.map(error => error.message) })
-
-  next()
-}
-
-export default userUpdateDataDTO
+export default validateUserUpdateDataDTO

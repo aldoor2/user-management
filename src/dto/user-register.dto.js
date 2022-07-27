@@ -31,17 +31,6 @@ ajv.addFormat("password", /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/)
 addFormats(ajv, ['email', 'uuid'])
 addErrors(ajv)
 
-const validateSchema = ajv.compile(RegisterDTOSchema)
+const validateUserRegisterDTO = ajv.compile(RegisterDTOSchema)
 
-const userRegisterDTO = (req, res, next) => {
-  const isDTOValid = validateSchema(req.body)
-
-  if (!isDTOValid)
-    return res
-      .status(400)
-      .json({ errors: validateSchema.errors.map(error => error.message) })
-
-  next()
-}
-
-export default userRegisterDTO
+export default validateUserRegisterDTO

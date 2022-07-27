@@ -25,17 +25,6 @@ ajv.addFormat("password", /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/)
 addFormats(ajv, ['email'])
 addErrors(ajv)
 
-const validateSchema = ajv.compile(LoginDTOSchema)
+const validateUserLoginDTO = ajv.compile(LoginDTOSchema)
 
-const userLoginDTO = (req, res, next) => {
-  const isDTOValid = validateSchema(req.body)
-
-  if (!isDTOValid)
-    return res
-      .status(400)
-      .json({ errors: validateSchema.errors.map(error => error.message) })
-
-  next()
-}
-
-export default userLoginDTO
+export default validateUserLoginDTO
