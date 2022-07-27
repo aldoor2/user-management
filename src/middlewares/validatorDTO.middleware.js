@@ -6,10 +6,10 @@ export const validationDTO =
       const isDTOValid = validateDTO(req.body)
 
       if (!isDTOValid)
-        return next(new HttpException(400, JSON.stringify(
+        return next(new HttpException(
+          400,
           validateDTO.errors.map(error => error.message)
-        )));
-
+        ));
 
       next()
     }
